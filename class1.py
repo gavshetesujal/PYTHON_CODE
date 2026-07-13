@@ -51,7 +51,7 @@ class Library:
 if __name__ == "__main__":
     library = Library()
     book = Book("2026", "XYZ")
-    patron = Patron("Alice")
+    patron = Patron("ABC")
 
     library.add_book(book)
     library.register_patron(patron)
