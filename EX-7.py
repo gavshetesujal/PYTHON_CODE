@@ -1,21 +1,11 @@
-# Step 1: Import the regular expression module
-import re
+import csv
 
-# Step 2: Store the text in a variable
-text=""" 
-Hello Students!
-For any  queries, contact abs@gmail.com or teacher123@collage.edu.com
-You can also contact support@yahoo.com ."""
+with open("students.csv", "w", newline="") as file:
+    writer = csv.writer(file)
 
-#
-email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,}'
+    writer.writerow(["Name", "Age", "Course"])
+    writer.writerow(["Rahul", 20, "BTech"])
+    writer.writerow(["Priya", 21, "BCA"])
+    writer.writerow(["Amit", 19, "BTech"])
 
-#Step 4: Find all email addresses in the text
-emails =re.findall(email_pattern,text)
-
-# Step 5: Display a heading
-print("Email addresses found:")
-
-# Step 6: Display each email address
-for email in emails:
-    print(email)
+print("CSV file created")
