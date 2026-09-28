@@ -1,22 +1,16 @@
 import csv
+import json
 
-headers = ["Name", "Age", "Course"]
-rows = [
-    ["Rahul", 20, "BTech"],
-    ["Priya", 21, "BCA"],
-    ["Amit", 19, "BTech"]
-]
+# convert csv to json
+input_file = "students.csv"
+output_file = "students.json"
 
-with open("students.csv", mode="w", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file)
-    writer.writerow(headers) 
-    writer.writerows(rows)   
+with open(input_file, "r", newline="") as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    data = list(csv_reader)
 
-print("CSV file 'students.csv' created successfully!\n")
+with open(output_file, "w" ) as json_file:
+    json.dump(data, json_file, indent=4)
 
-
-print("Reading the CSV file:")
-with open("students.csv", mode="r", encoding="utf-8") as file:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row)
+print(f"CSV file '{input_file}' converted to JSON file '{output_file}' successfully!")
+print("JESON file created:", output_file)
